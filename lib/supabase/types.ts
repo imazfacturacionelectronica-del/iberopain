@@ -62,6 +62,8 @@ export interface Database {
           created_at?: string
         }
         Update: {
+          id?: string
+          protocol_id?: string
           version_number?: number
           content?: Json
           bibliography?: Json
@@ -70,6 +72,7 @@ export interface Database {
           approved_at?: string | null
           published_at?: string | null
           search_summary?: string | null
+          created_at?: string
         }
       }
       protocol_update_jobs: {

@@ -7,7 +7,8 @@ export async function approveProtocolDraft(
   protocolId: string,
   versionId: string
 ): Promise<{ success: boolean; error?: string }> {
-  const supabase = await createServiceClient()
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const supabase = await createServiceClient() as any
   const { data: { user } } = await supabase.auth.getUser()
   const now = new Date().toISOString()
 
@@ -50,7 +51,8 @@ export async function rejectProtocolDraft(
   protocolId: string,
   versionId: string
 ): Promise<{ success: boolean; error?: string }> {
-  const supabase = await createServiceClient()
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const supabase = await createServiceClient() as any
   const now = new Date().toISOString()
 
   const { error } = await supabase
