@@ -1,5 +1,9 @@
 -- supabase/migrations/002_cron_job.sql
 
+-- PREREQUISITO: configurar estas variables en la base de datos antes de aplicar:
+--   ALTER DATABASE postgres SET app.supabase_url = 'https://<project-ref>.supabase.co';
+--   ALTER DATABASE postgres SET app.service_role_key = '<service_role_key>';
+
 -- Habilitar extensión pg_cron (ya viene en Supabase)
 create extension if not exists pg_cron;
 

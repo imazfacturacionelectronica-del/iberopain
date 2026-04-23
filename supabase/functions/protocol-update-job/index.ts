@@ -82,6 +82,9 @@ INSTRUCCIONES:
     if (!jsonMatch) throw new Error('Claude no retornó JSON válido')
 
     const parsed = JSON.parse(jsonMatch[0])
+    if (!parsed.content || !Array.isArray(parsed.bibliography) || typeof parsed.search_summary !== 'string') {
+      throw new Error(`Respuesta de Claude con estructura inválida: ${JSON.stringify(Object.keys(parsed))}`)
+    }
 
     const { data: versionData } = await supabase
       .from('protocol_versions')
@@ -142,6 +145,12 @@ INSTRUCCIONES:
 Deno.serve(async (req) => {
   if (req.method !== 'POST') {
     return new Response('Method not allowed', { status: 405 })
+  }
+
+  const authHeader = req.headers.get('Authorization')
+  const expectedToken = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!
+  if (authHeader !== `Bearer ${expectedToken}`) {
+    return new Response('Unauthorized', { status: 401 })
   }
 
   const { data: protocols, error } = await supabase
