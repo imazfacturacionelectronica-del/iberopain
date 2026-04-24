@@ -1,7 +1,10 @@
 import { Resend } from 'resend'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? 'https://cidal.vercel.app'
+
+function getResend() {
+  return new Resend(process.env.RESEND_API_KEY)
+}
 const ADMIN_EMAIL = 'imaz.facturacionelectronica@gmail.com'
 // TODO: add team member emails (Dra. Castillo, Dr. Guette, Enfermera) once confirmed
 const TEAM_EMAILS = [ADMIN_EMAIL]
@@ -21,7 +24,7 @@ function validateSlug(slug: string): void {
 export async function notifyAdminDraftReady(protocolTitle: string, slug: string) {
   validateSlug(slug)
   const title = escapeHtml(protocolTitle)
-  const { error } = await resend.emails.send({
+  const { error } = await getResend().emails.send({
     from: 'CIDAL App <noreply@cidal.app>',
     to: [ADMIN_EMAIL],
     subject: `[CIDAL] Borrador listo para revisión: ${protocolTitle}`,
@@ -44,7 +47,7 @@ export async function notifyAdminDraftReady(protocolTitle: string, slug: string)
 export async function notifyTeamProtocolPublished(protocolTitle: string, slug: string) {
   validateSlug(slug)
   const title = escapeHtml(protocolTitle)
-  const { error } = await resend.emails.send({
+  const { error } = await getResend().emails.send({
     from: 'CIDAL App <noreply@cidal.app>',
     to: TEAM_EMAILS,
     subject: `[CIDAL] Protocolo actualizado: ${protocolTitle}`,
