@@ -25,14 +25,14 @@ export async function notifyAdminDraftReady(protocolTitle: string, slug: string)
   validateSlug(slug)
   const title = escapeHtml(protocolTitle)
   const { error } = await getResend().emails.send({
-    from: 'CIDAL App <noreply@cidal.app>',
+    from: 'IberoPain <noreply@cidal.app>',
     to: [ADMIN_EMAIL],
-    subject: `[CIDAL] Borrador listo para revisión: ${protocolTitle}`,
+    subject: `[IberoPain] Borrador listo para revisión: ${protocolTitle}`,
     html: `
       <h2>Protocolo actualizado — revisión requerida</h2>
       <p>El sistema de actualización automática generó un borrador actualizado para:</p>
       <p><strong>${title}</strong></p>
-      <p>Revisa el borrador y apruébalo o recházalo en la app CIDAL:</p>
+      <p>Revisa el borrador y apruébalo o recházalo en la app IberoPain:</p>
       <a href="${APP_URL}/protocolos/${slug}/revision" style="
         background:#1e3a6b;color:white;padding:10px 20px;
         border-radius:6px;text-decoration:none;display:inline-block;margin-top:12px
@@ -48,9 +48,9 @@ export async function notifyTeamProtocolPublished(protocolTitle: string, slug: s
   validateSlug(slug)
   const title = escapeHtml(protocolTitle)
   const { error } = await getResend().emails.send({
-    from: 'CIDAL App <noreply@cidal.app>',
+    from: 'IberoPain <noreply@cidal.app>',
     to: TEAM_EMAILS,
-    subject: `[CIDAL] Protocolo actualizado: ${protocolTitle}`,
+    subject: `[IberoPain] Protocolo actualizado: ${protocolTitle}`,
     html: `
       <h2>Protocolo publicado</h2>
       <p>El siguiente protocolo ha sido revisado y publicado con nueva evidencia:</p>

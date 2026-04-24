@@ -31,7 +31,7 @@ export default function LoginPage() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-blue-50">
       <div className="bg-white p-8 rounded-xl shadow-md w-full max-w-md">
-        <h1 className="text-2xl font-bold text-blue-900 mb-1">CIDAL App</h1>
+        <h1 className="text-2xl font-bold text-blue-900 mb-1">IberoPain</h1>
         <p className="text-gray-500 mb-6 text-sm">Clínica de Dolor — Clínica Iberoamérica</p>
 
         <form onSubmit={handleLogin} className="space-y-4">

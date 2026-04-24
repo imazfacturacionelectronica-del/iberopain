@@ -40,7 +40,7 @@ export async function approveProtocolDraft(
   if (protocol) {
     await notifyTeamProtocolPublished(protocol.title, protocol.slug)
     await sendTelegramMessage(
-      `✅ Protocolo aprobado: *${protocol.title}*\n\nRevisa la versión actualizada en la app CIDAL.`
+      `✅ Protocolo aprobado: *${protocol.title}*\n\nRevisa la versión actualizada en la app IberoPain.`
     )
   }
 

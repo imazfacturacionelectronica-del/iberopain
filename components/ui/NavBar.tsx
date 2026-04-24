@@ -23,7 +23,7 @@ export function NavBar({ role }: { role: string }) {
   return (
     <nav className="bg-blue-900 text-white px-6 py-3 flex items-center justify-between">
       <div className="flex items-center gap-6">
-        <span className="font-bold text-lg">CIDAL</span>
+        <span className="font-bold text-lg">IberoPain</span>
         {links.map(link => (
           <Link
             key={link.href}

@@ -5,8 +5,8 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'CIDAL App — Clínica de Dolor Iberoamérica',
-  description: 'Plataforma digital del Servicio de Dolor',
+  title: 'IberoPain — Clínica de Dolor Iberoamérica',
+  description: 'Plataforma digital del Servicio de Dolor — Clínica Iberoamérica',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
